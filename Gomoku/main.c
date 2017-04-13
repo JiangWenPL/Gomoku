@@ -11,7 +11,19 @@
 int InitialTheGame();
 
 int Setup() {
-	initWindow("Gomoku", DEFAULT, DEFAULT, 1024, 768);
+	initWindow("Gomoku", DEFAULT, DEFAULT, 1536, 802);
 	InitialTheGame();
+	return 0;
+}
+
+int InitialTheGame()
+{
+	beginPaint();
+	ACL_Image Checkboard, DashBoard;
+	loadImage(".//checkboard.bmp", &Checkboard);
+	putImage(&Checkboard, 0, 0);
+//	loadImage(".//DashBoard.bmp", &DashBoard);
+//	putImage(&DashBoard, DASHBOARDX, DASHBOARDY);
+	endPaint();
 	return 0;
 }

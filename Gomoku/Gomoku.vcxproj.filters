@@ -31,7 +31,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="五子棋盤.bmp">
+    <Image Include="checkboard.bmp">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

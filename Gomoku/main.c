@@ -8,7 +8,10 @@
 */
 #include"main.h"
 
+int InitialTheGame();
+
 int Setup() {
 	initWindow("Gomoku", DEFAULT, DEFAULT, 1024, 768);
+	InitialTheGame();
 	return 0;
 }

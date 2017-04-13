@@ -12,8 +12,10 @@
 
 
 int Setup() {
-	initWindow("Gomoku", DEFAULT, DEFAULT, 1460, 750);
+	initWindow("Gomoku", DEFAULT, DEFAULT, WINDOW_WIDTH, WINDOW_HEIGHT);
 	initConsole();
+	Status = MENU;
+//	Status = PLAYING;
 	registerTimerEvent(&TimerEvent);
 	registerMouseEvent(&MouseEvent);
 	InitialTheGame();
@@ -23,9 +25,8 @@ int Setup() {
 int InitialTheGame()
 {
 	beginPaint();
-
-	loadImage(".//checkboard.bmp", &Checkboard);
-//	loadImage(".//DashBoard.bmp", &DashBoard);
+	loadImage(".//CheckBoardNew.bmp", &Checkboard);
+	loadImage(".//StartMenu.bmp", &StartMenu);
 //	putImage(&DashBoard, DASHBOARDX, DASHBOARDY);
 	endPaint();
 	return 0;
@@ -33,7 +34,22 @@ int InitialTheGame()
 
 int PaintTheGame()
 {
-	putImage(&Checkboard, 0, 0);
+	switch (Status)
+	{
+	case MENU:
+		beginPaint();
+		putImage(&StartMenu, 0, 0);
+		endPaint();
+		break;
+	case PLAYING:	
+		beginPaint();
+		putImage(&Checkboard, 0, 0);
+		endPaint(); 
+		break;
+	default:
+		break;
+	}
+
 	return 0;
 }
 
@@ -44,9 +60,9 @@ TimerEventCallback TimerEvent(int timerID)
 
 MouseEventCallback MouseEvent(int x, int y, int button, int event)
 {
-	beginPaint();
+
 	PaintTheGame();
-	endPaint();
+
 	printf("x=%4d, y=%4d, butoton =%d, event = %d\n", x, y, button, event);
 	return 0;
 }

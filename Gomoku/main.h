@@ -10,11 +10,13 @@ typedef int status;
 status Status;
 
 //常量定义如下
-const int MENU = 0;
-const int PLAYING = 1;
-const int END = 2;
+const int WINDOW_WIDTH = 1400;
+const int WINDOW_HEIGHT = 740;
+#define MENU  0
+#define PLAYING  1
+#define END  2
 
-ACL_Image Checkboard;//载入的图片
+ACL_Image Checkboard, StartMenu, White, Black;//载入的图片
 
 int InitialTheGame();//载入图片
 int PaintTheGame();//绘制当前游戏画面

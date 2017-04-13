@@ -8,10 +8,14 @@
 */
 #include"main.h"
 
-int InitialTheGame();
 
 int Setup() {
-	initWindow("Gomoku", DEFAULT, DEFAULT, 1536, 802);
+	initWindow("Gomoku", DEFAULT, DEFAULT, WINDOW_WIDTH, WINDOW_HEIGHT);
+	initConsole();
+	Status = MENU;
+//	Status = PLAYING;
+	registerTimerEvent(&TimerEvent);
+	registerMouseEvent(&MouseEvent);
 	InitialTheGame();
 	return 0;
 }
@@ -19,11 +23,69 @@ int Setup() {
 int InitialTheGame()
 {
 	beginPaint();
-	ACL_Image Checkboard, DashBoard;
-	loadImage(".//checkboard.bmp", &Checkboard);
-	putImage(&Checkboard, 0, 0);
-//	loadImage(".//DashBoard.bmp", &DashBoard);
+	loadImage(".//black.bmp", &BlackChess);
+	loadImage(".//white.bmp", &WhiteChess);
+	loadImage(".//CheckBoardNew.bmp", &Checkboard);
+	loadImage(".//StartMenu.bmp", &StartMenu);
 //	putImage(&DashBoard, DASHBOARDX, DASHBOARDY);
 	endPaint();
+	return 0;
+}
+
+int PaintTheGame()
+{
+	switch (Status)
+	{
+	case MENU:
+		beginPaint();
+		putImage(&StartMenu, 0, 0);
+		endPaint();
+		break;
+	case PLAYING:	
+		beginPaint();
+		putImage(&Checkboard, 0, 0);
+		PaintTheChess();
+		endPaint(); 
+		break;
+	case END:
+		beginPaint();
+//		putImage(&Vitory, 0, 0);
+		endPaint();
+		break;
+	default:
+		break;
+	}
+
+	return 0;
+}
+
+status PaintTheChess()
+{
+	return 0;
+}
+
+TimerEventCallback TimerEvent(int timerID)
+{
+	return 0;
+}
+
+MouseEventCallback MouseEvent(int x, int y, int button, int event)
+{
+/*	switch (Status)
+	{
+	case MENU:
+		//如果鼠标event == 2且位于开始按钮范围内，则Status = Playing.
+		break;
+	case PLAYING:
+		break;
+	case END:
+		break;
+	default:
+		break;
+	}
+	根据程序处于的阶段 判断鼠标对应的操作*/
+	PaintTheGame();
+
+	printf("x=%4d, y=%4d, butoton =%d, event = %d\n", x, y, button, event);
 	return 0;
 }

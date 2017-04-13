@@ -34,5 +34,14 @@
     <Image Include="CheckBoardNew.bmp">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="black.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="StartMenu.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="white.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>

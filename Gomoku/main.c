@@ -8,7 +8,18 @@
 */
 #include"main.h"
 #define DEBUG
-
+//Debug mode.
+//Global Variable define
+status Status;
+int m_Victory = 0;
+int CheckBoard[CHECKBORAD_SIZE][CHECKBORAD_SIZE] = { 0 };
+//1 -> black side victory
+//-1 -> white side victory.
+int m_Turn = 0;
+//So as turn.
+//Local variable.
+const int WINDOW_WIDTH = 1400;
+const int WINDOW_HEIGHT = 740;//Window size.
 int Setup() {
 	initWindow("Gomoku", DEFAULT, DEFAULT, WINDOW_WIDTH, WINDOW_HEIGHT);
 #ifdef DEBUG
@@ -25,10 +36,10 @@ int Setup() {
 int InitialTheGame()
 {
 	beginPaint();
-	loadImage(".//black.bmp", &BlackChess);
-	loadImage(".//white.bmp", &WhiteChess);
-	loadImage(".//CheckBoardNew.bmp", &Checkboard);
-	loadImage(".//StartMenu.bmp", &StartMenu);
+	loadImage(".//black.bmp", &Img_BlackChess);
+	loadImage(".//white.bmp", &Img_WhiteChess);
+	loadImage(".//CheckBoardNew.bmp", &Img_Checkboard);
+	loadImage(".//StartMenu.bmp", &Img_StartMenu);
 //	putImage(&DashBoard, DASHBOARDX, DASHBOARDY);
 	endPaint();
 	return 0;
@@ -40,12 +51,12 @@ int PaintTheGame()
 	{
 	case MENU:
 		beginPaint();
-		putImage(&StartMenu, 0, 0);
+		putImage(&Img_StartMenu, 0, 0);
 		endPaint();
 		break;
 	case PLAYING:	
 		beginPaint();
-		putImage(&Checkboard, 0, 0);
+		putImage(&Img_Checkboard, 0, 0);
 		PaintTheChess();
 		endPaint(); 
 		break;
@@ -88,6 +99,7 @@ MouseEventCallback MouseEvent(int x, int y, int button, int event)
 	根据程序处于的阶段 判断鼠标对应的操作*/
 	PaintTheGame();
 #ifdef DEBUG
+	//Point* ptr=NULL;
 	printf("x=%4d, y=%4d, butoton =%d, event = %d\n", x, y, button, event);
 #endif // DEBUG
 	return 0;

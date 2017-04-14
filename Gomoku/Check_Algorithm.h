@@ -9,9 +9,17 @@
 #pragma once
 #ifndef CHECK_ALGORITHM_H
 #include "main.h"
+
 //VAriable define & extern.
+typedef struct S_Chess{
+	int X;
+	int Y;
+	int Side;
+	struct S_Chess* Prior;
+	struct S_Chess* Next;
+}Chess;
 extern int m_Victory;
-
-int 
+extern int m_Turn;
+int Change_Data(Point* This);
+int Chess_Pop();
 #endif // !CHECK_ALGORITHM_H
-

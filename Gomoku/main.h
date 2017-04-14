@@ -12,23 +12,14 @@
 #include "acllib.h"
 #include "stdio.h"
 #include "AI.h"
-#include "Check_Algorithm.h"
+//#include "Check_Algorithm.h"
 //Type define.
-typedef struct {
+typedef struct s_Point{
 	int x;
 	int y;
 } Point;
 typedef int status;
-//Global Variable define
-status Status;
-int m_Victory=0;
-//1 -> black side victory
-//-1 -> white side victory.
-int turn=0;
-//So as turn.
-//Local variable.
-const int WINDOW_WIDTH = 1400;
-const int WINDOW_HEIGHT = 740;//至此为窗口尺寸
+
 //Constants
 #define MENU  0
 #define PLAYING  1
@@ -40,7 +31,9 @@ const int WINDOW_HEIGHT = 740;//至此为窗口尺寸
 #define CHESS_SIZE 0
 #define BLACKSIDE 1
 #define WHITESIDE -1
-ACL_Image Checkboard, StartMenu, WhiteChess, BlackChess;//载入的图片
+#define RETRACT -1
+#define CHECKBORAD_SIZE 15
+ACL_Image Img_Checkboard, Img_StartMenu, Img_WhiteChess, Img_BlackChess;//载入的图片
 //Funtion define.
 status InitialTheGame();//载入图片
 status PaintTheGame();//绘制当前游戏画面
@@ -48,6 +41,10 @@ status PaintTheChess();//根据二维数组画出旗子
 TimerEventCallback TimerEvent(int timerID);
 MouseEventCallback MouseEvent(int x, int y, int button, int event);
 
-
+//Extern variable
+extern status Status;
+extern int m_Victory;
+extern int CheckBoard[CHECKBORAD_SIZE][CHECKBORAD_SIZE];
+extern int m_Turn;
 //Ai module
 #endif // !MAIN_H

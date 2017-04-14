@@ -8,4 +8,12 @@
 */
 #include"Check_Algorithm.h"
 
+int Change_Data(Point* This) {
+	if (This->x == RETRACT && This->y == RETRACT) {
+		Chess_Pop();
+	}
+}
+int Chess_Pop() {
+	;
+}
 //Check who is winner.

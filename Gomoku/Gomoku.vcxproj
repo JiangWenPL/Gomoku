@@ -156,6 +156,9 @@
     <Image Include="StartMenu.bmp" />
     <Image Include="white.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Error_Log.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

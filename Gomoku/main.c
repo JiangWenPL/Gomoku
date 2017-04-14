@@ -21,6 +21,8 @@ int m_Turn = 0;
 const int WINDOW_WIDTH = 1400;
 const int WINDOW_HEIGHT = 740;//Window size.
 int Setup() {
+	freopen("Error_Log.txt", "w", stderr);
+	//Redirect stderr to our error log file.
 	initWindow("Gomoku", DEFAULT, DEFAULT, WINDOW_WIDTH, WINDOW_HEIGHT);
 #ifdef DEBUG
 	initConsole();

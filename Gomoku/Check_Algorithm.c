@@ -20,7 +20,19 @@ int Change_Data(Point* This) {
 	}
 	else {
 		//Normal status
-
+		Chess_PushBack(This);
+	}
+}
+int Chess_PushBack(Point *This) {
+	if (pHead == NULL) {
+		//New linked list.
+		pHead = (Chess*)malloc(sizeof(*pHead));//Probably have problem.
+		assert(pHead);
+		pHead->Next = NULL;
+		pHead->Prior = NULL;
+		pHead->X = This->x;
+		pHead->Y = This->y;
+		pTail = pHead;
 	}
 }
 int Chess_Pop() {
@@ -32,6 +44,7 @@ int Chess_Pop() {
 	}
 	else {
 		CheckBoard[pTail->Y][pTail->X] = 0;
+		//Put check board back to origin.
 		if (pTail->Prior == NULL) {
 			//Just have one chess.
 			free(pTail);

@@ -21,12 +21,24 @@
     <ClInclude Include="main.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Check_Algorithm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AI.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="acllib.c">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="main.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Check_Algorithm.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AI.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -43,5 +55,15 @@
     <Image Include="white.bmp">
       <Filter>资源文件</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Error_Log.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="BackGround.mp3">
+      <Filter>资源文件</Filter>
+    </Media>
   </ItemGroup>
 </Project>

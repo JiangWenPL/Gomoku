@@ -47,6 +47,7 @@ int InitialTheGame()
 	loadSound(".//BackGround.mp3", &Snd_Background);
 //	putImage(&DashBoard, DASHBOARDX, DASHBOARDY);
 	endPaint();
+	playSound(Snd_Background, 1);
 	return 0;
 }
 
@@ -56,7 +57,6 @@ int PaintTheGame()
 	{
 	case MENU:
 		beginPaint();
-		playSound(Snd_Background, 100);
 		putImage(&Img_StartMenu, 0, 0);
 		endPaint();
 		break;
@@ -106,7 +106,8 @@ MouseEventCallback MouseEvent(int x, int y, int button, int event)
 	PaintTheGame();
 #ifdef DEBUG
 	//Point* ptr=NULL;
-	printf("x=%4d, y=%4d, butoton =%d, event = %d\n", x, y, button, event);
+	printf("Snd_Background=%d\n", Snd_Background);
+	//printf("x=%4d, y=%4d, butoton =%d, event = %d\n", x, y, button, event);
 #endif // DEBUG
 	return 0;
 }

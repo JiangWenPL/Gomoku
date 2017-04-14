@@ -107,7 +107,7 @@ int Chess_PushBack(Point *This) {
 		pTail->Next = (Chess*)malloc(sizeof(*pTail));
 		assert(pTail->Next);
 		//In case of malloc fail.
-		pTail->Prior = pTail;
+		(pTail->Next)->Prior = pTail;
 		pTail = pTail->Next;
 		//Move pTail point to the end.
 		pTail->Next = NULL;

@@ -83,6 +83,17 @@ status PaintTheChess()
 	return 0;
 }
 
+POINT get_point(int x, int y)
+{
+	POINT point;
+	int row, col;
+	col = (x - BOARD_C0_X + HALF_CHESS_SIZE) / BOARD_BOX_SIZE;
+	row = (y - BOARD_R0_Y + HALF_CHESS_SIZE) / BOARD_BOX_SIZE;
+	point.x = col;
+	point.y = row;
+	return point;
+}
+
 TimerEventCallback TimerEvent(int timerID)
 {
 	return 0;
@@ -90,23 +101,34 @@ TimerEventCallback TimerEvent(int timerID)
 
 MouseEventCallback MouseEvent(int x, int y, int button, int event)
 {
-/*	switch (Status)
+	POINT point;
+	if (button != 1 || event != 2)return 0;
+	switch (Status)
 	{
-	case MENU:
-		//如果鼠标event == 2且位于开始按钮范围内，则Status = Playing.
+	case MENU:if (x<START_BUTTON_RIGHT_X&&x>START_BUTTON_LEFT_X&&y > START_BUTTON_UP_Y&&y < START_BUTTON_DOWN_Y) {
+		Status = PLAYING;
+	}		//如果鼠标event == 2且位于开始按钮范围内，则Status = Playing.
 		break;
-	case PLAYING:
+	case PLAYING:if (x<BOARD_C14_X + HALF_CHESS_SIZE&&x>BOARD_C0_X - HALF_CHESS_SIZE&&y > BOARD_R0_Y - HALF_CHESS_SIZE&&y < BOARD_R14_Y + HALF_CHESS_SIZE) {
+		point = get_point(x, y);
+		printf("point.x = %d   point.y = %d\n", point.x, point.y);
+		change_data(point);
+	}
+				 else if (x > REGRET_BUTTON_LEFT_X&&x < REGRET_BUTTON_RIGHT_X&&y<REGRET_BUTTON_DOWN_Y&&y>REGRET_BUTTON_UP_Y) {
+					 point.x = point.y = -1;
+					 change_data(point);
+				 }
 		break;
 	case END:
 		break;
 	default:
 		break;
 	}
-	根据程序处于的阶段 判断鼠标对应的操作*/
+	/*根据程序处于的阶段 判断鼠标对应的操作*/
 	PaintTheGame();
 #ifdef DEBUG
 	//Point* ptr=NULL;
-	printf("Snd_Background=%d\n", Snd_Background);
+	//printf("Snd_Background=%d\n", Snd_Background);
 	printf("x=%4d, y=%4d, butoton =%d, event = %d\n", x, y, button, event);
 #endif // DEBUG
 	return 0;

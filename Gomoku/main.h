@@ -26,17 +26,25 @@ typedef int status;
 #define MENU  0
 #define PLAYING  1
 #define END  2//至此为游戏阶段
-#define START_BUTTON_LEFT_X 520 //开始按钮的四个坐标信息
+
+#define HALF_CHESS_SIZE 23
+#define BOARD_BOX_SIZE  47
+#define BLACKSIDE 1
+#define WHITESIDE -1
+#define RETRACT -1
+#define CHECKBORAD_SIZE 15
+
+#define START_BUTTON_LEFT_X 520 
 #define START_BUTTON_RIGHT_X 890
 #define START_BUTTON_UP_Y 440
 #define START_BUTTON_DOWN_Y 580
-#define REGRET_BUTTON_LEFT_X 870//悔棋按钮的四个坐标信息
+#define REGRET_BUTTON_LEFT_X 870
 #define REGRET_BUTTON_RIGHT_X 1020
 #define REGRET_BUTTON_UP_Y 150
 #define REGRET_BUTTON_DOWN_Y 260
 
 
-#define BOARD_C0_X 153//定义棋盘最左边的第0条线的横坐标 C表示列线
+#define BOARD_C0_X 153
 #define BOARD_C1_X 200
 #define BOARD_C2_X 247
 #define BOARD_C3_X 294
@@ -66,17 +74,12 @@ typedef int status;
 #define BOARD_R11_Y 556
 #define BOARD_R12_Y 603
 #define BOARD_R13_Y 651
-#define BOARD_R14_Y 689//定义棋盘最下边的边线的纵坐标 R表示行线
-
-#define CHESS_SIZE 0
-#define BLACKSIDE 1
-#define WHITESIDE -1
-#define RETRACT -1
-#define CHECKBORAD_SIZE 15
+#define BOARD_R14_Y 689
 //Funtion define.
 status InitialTheGame();//载入图片
 status PaintTheGame();//绘制当前游戏画面
 status PaintTheChess();//根据二维数组画出旗子
+POINT get_point(int x, int y);//Get the point on the board from the location on the screen.
 TimerEventCallback TimerEvent(int timerID);
 MouseEventCallback MouseEvent(int x, int y, int button, int event);
 

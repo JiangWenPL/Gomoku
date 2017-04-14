@@ -3,17 +3,19 @@
 *    Gomoku Project
 *	 Team production.
 *	 Team member: Jiang Wen, Huang Nianmei, Li Jianing.
-*    This file was created by Wen Jiang on 4/5/2017.
+*    This file was created by Wen Jiang on 4/10/2017.
 *    Copyright (c) 2017 Wen Jiang, Huang Nianmei, Li Jianing. All rights reserved.
 */
 #include"main.h"
-
+#define DEBUG
 
 int Setup() {
 	initWindow("Gomoku", DEFAULT, DEFAULT, WINDOW_WIDTH, WINDOW_HEIGHT);
+#ifdef DEBUG
 	initConsole();
+#endif // DEBUG
 	Status = MENU;
-//	Status = PLAYING;
+	//Status = PLAYING;
 	registerTimerEvent(&TimerEvent);
 	registerMouseEvent(&MouseEvent);
 	InitialTheGame();
@@ -85,7 +87,8 @@ MouseEventCallback MouseEvent(int x, int y, int button, int event)
 	}
 	根据程序处于的阶段 判断鼠标对应的操作*/
 	PaintTheGame();
-
+#ifdef DEBUG
 	printf("x=%4d, y=%4d, butoton =%d, event = %d\n", x, y, button, event);
+#endif // DEBUG
 	return 0;
 }

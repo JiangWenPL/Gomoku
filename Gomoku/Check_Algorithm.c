@@ -87,7 +87,7 @@ int Check_Winner(Point * This)
 		if (Connect_Count == VICTORYCONDITION) is_Victory = TRUE;
 	}
 	if (is_Victory) {
-		is_Victory = m_Turn;
+		m_Victory = m_Turn;
 		Chess_Clean();
 	}
 	return 0;

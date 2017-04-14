@@ -45,8 +45,9 @@ int InitialTheGame()
 	loadImage(".//CheckBoardNew.bmp", &Img_Checkboard);
 	loadImage(".//StartMenu.bmp", &Img_StartMenu);
 	loadSound(".//BackGround.mp3", &Snd_Background);
-//	putImage(&DashBoard, DASHBOARDX, DASHBOARDY);
+	//	putImage(&DashBoard, DASHBOARDX, DASHBOARDY);
 	endPaint();
+	m_Turn = 1;
 	playSound(Snd_Background, 1);
 	return 0;
 }
@@ -60,15 +61,15 @@ int PaintTheGame()
 		putImage(&Img_StartMenu, 0, 0);
 		endPaint();
 		break;
-	case PLAYING:	
+	case PLAYING:
 		beginPaint();
 		putImage(&Img_Checkboard, 0, 0);
 		PaintTheChess();
-		endPaint(); 
+		endPaint();
 		break;
 	case END:
 		beginPaint();
-//		putImage(&Vitory, 0, 0);
+		//		putImage(&Vitory, 0, 0);
 		endPaint();
 		break;
 	default:
@@ -103,29 +104,43 @@ MouseEventCallback MouseEvent(int x, int y, int button, int event)
 {
 	POINT point;
 	if (button != 1 || event != 2)return 0;
-	switch (Status)
-	{
-	case MENU:if (x<START_BUTTON_RIGHT_X&&x>START_BUTTON_LEFT_X&&y > START_BUTTON_UP_Y&&y < START_BUTTON_DOWN_Y) {
-		Status = PLAYING;
-	}		//如果鼠标event == 2且位于开始按钮范围内，则Status = Playing.
-		break;
-	case PLAYING:if (x<BOARD_C14_X + HALF_CHESS_SIZE&&x>BOARD_C0_X - HALF_CHESS_SIZE&&y > BOARD_R0_Y - HALF_CHESS_SIZE&&y < BOARD_R14_Y + HALF_CHESS_SIZE) {
-		point = get_point(x, y);
-		printf("point.x = %d   point.y = %d\n", point.x, point.y);
-		change_data(point);
+	else {
+		switch (Status)
+		{
+		case MENU:
+			if (x<START_BUTTON_RIGHT_X&&x>START_BUTTON_LEFT_X&&y > START_BUTTON_UP_Y&&y < START_BUTTON_DOWN_Y) {
+				Status = PLAYING;
+			}		//如果鼠标event == 2且位于开始按钮范围内，则Status = Playing.
+			break;
+		case PLAYING:
+			if (x<BOARD_C14_X + HALF_CHESS_SIZE&&x>BOARD_C0_X - HALF_CHESS_SIZE&&y > BOARD_R0_Y - HALF_CHESS_SIZE&&y < BOARD_R14_Y + HALF_CHESS_SIZE) {
+				point = get_point(x, y);
+				Change_Data(&point);
+				m_Turn = -m_Turn;
+#ifdef DEBUG
+				printf("point.x = %d   point.y = %d\n", point.x, point.y);
+				for (int i = 0; i < 15; i++) {
+					for (int j = 0; j < 15; j++) {
+						printf("%2d", CheckBoard[i][j]);
+					}
+					printf("\n");
+				}
+				printf("m_Vicotriy= %d\n", m_Victory);
+#endif // DEBUG
+			}
+			 else if (x > REGRET_BUTTON_LEFT_X&&x < REGRET_BUTTON_RIGHT_X&&y<REGRET_BUTTON_DOWN_Y&&y>REGRET_BUTTON_UP_Y) {
+				point.x = point.y = -1;
+				Change_Data(&point);
+			}
+			break;
+		case END:
+			break;
+		default:
+			break;
+		}
+		/*根据程序处于的阶段 判断鼠标对应的操作*/
+		PaintTheGame();
 	}
-				 else if (x > REGRET_BUTTON_LEFT_X&&x < REGRET_BUTTON_RIGHT_X&&y<REGRET_BUTTON_DOWN_Y&&y>REGRET_BUTTON_UP_Y) {
-					 point.x = point.y = -1;
-					 change_data(point);
-				 }
-		break;
-	case END:
-		break;
-	default:
-		break;
-	}
-	/*根据程序处于的阶段 判断鼠标对应的操作*/
-	PaintTheGame();
 #ifdef DEBUG
 	//Point* ptr=NULL;
 	printf("Snd_Background=%d\n", Snd_Background);

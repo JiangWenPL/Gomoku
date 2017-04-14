@@ -6,7 +6,7 @@
 *    This file was created by Wen Jiang on 4/5/2017.
 *    Copyright (c) 2017 Wen Jiang, Huang Nianmei, Li Jianing. All rights reserved.
 */
-#include"main.h"
+#include"main.h" 
 
 int InitialTheGame();
 
@@ -15,3 +15,5 @@ int Setup() {
 	InitialTheGame();
 	return 0;
 }
+
+int InitialTheGame() { ; }

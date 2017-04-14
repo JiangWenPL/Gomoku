@@ -11,6 +11,8 @@
 //Debug mode.
 //Global Variable define
 status Status;
+ACL_Image Img_Checkboard, Img_StartMenu, Img_WhiteChess, Img_BlackChess;//ÔØÈëµÄÍ¼Æ¬
+ACL_Sound Snd_Background, Snd_Victorary, Snd_PutChess;
 int m_Victory = 0;
 int CheckBoard[CHECKBORAD_SIZE][CHECKBORAD_SIZE] = { 0 };
 //1 -> black side victory
@@ -42,8 +44,10 @@ int InitialTheGame()
 	loadImage(".//white.bmp", &Img_WhiteChess);
 	loadImage(".//CheckBoardNew.bmp", &Img_Checkboard);
 	loadImage(".//StartMenu.bmp", &Img_StartMenu);
+	loadSound(".//BackGround.mp3", &Snd_Background);
 //	putImage(&DashBoard, DASHBOARDX, DASHBOARDY);
 	endPaint();
+	playSound(Snd_Background, 1);
 	return 0;
 }
 
@@ -102,7 +106,8 @@ MouseEventCallback MouseEvent(int x, int y, int button, int event)
 	PaintTheGame();
 #ifdef DEBUG
 	//Point* ptr=NULL;
-	printf("x=%4d, y=%4d, butoton =%d, event = %d\n", x, y, button, event);
+	printf("Snd_Background=%d\n", Snd_Background);
+	//printf("x=%4d, y=%4d, butoton =%d, event = %d\n", x, y, button, event);
 #endif // DEBUG
 	return 0;
 }

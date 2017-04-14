@@ -128,8 +128,8 @@ MouseEventCallback MouseEvent(int x, int y, int button, int event)
 	PaintTheGame();
 #ifdef DEBUG
 	//Point* ptr=NULL;
-	//printf("Snd_Background=%d\n", Snd_Background);
-	printf("x=%4d, y=%4d, butoton =%d, event = %d\n", x, y, button, event);
+	printf("Snd_Background=%d\n", Snd_Background);
+	//printf("x=%4d, y=%4d, butoton =%d, event = %d\n", x, y, button, event);
 #endif // DEBUG
 	return 0;
 }

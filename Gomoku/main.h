@@ -35,7 +35,6 @@ typedef int status;
 #define WHITESIDE -1
 #define RETRACT -1
 #define CHECKBORAD_SIZE 15
-ACL_Image Img_Checkboard, Img_StartMenu, Img_WhiteChess, Img_BlackChess;//载入的图片
 //Funtion define.
 status InitialTheGame();//载入图片
 status PaintTheGame();//绘制当前游戏画面

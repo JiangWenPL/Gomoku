@@ -61,4 +61,9 @@
       <Filter>资源文件</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="BackGround.mp3">
+      <Filter>资源文件</Filter>
+    </Media>
+  </ItemGroup>
 </Project>

@@ -11,6 +11,8 @@
 //Debug mode.
 //Global Variable define
 status Status;
+ACL_Image Img_Checkboard, Img_StartMenu, Img_WhiteChess, Img_BlackChess;//ÔØÈëµÄÍ¼Æ¬
+ACL_Sound Snd_Background, Snd_Victorary, Snd_PutChess;
 int m_Victory = 0;
 int CheckBoard[CHECKBORAD_SIZE][CHECKBORAD_SIZE] = { 0 };
 //1 -> black side victory
@@ -42,6 +44,7 @@ int InitialTheGame()
 	loadImage(".//white.bmp", &Img_WhiteChess);
 	loadImage(".//CheckBoardNew.bmp", &Img_Checkboard);
 	loadImage(".//StartMenu.bmp", &Img_StartMenu);
+	loadSound(".//BackGround.mp3", &Snd_Background);
 //	putImage(&DashBoard, DASHBOARDX, DASHBOARDY);
 	endPaint();
 	return 0;
@@ -53,6 +56,7 @@ int PaintTheGame()
 	{
 	case MENU:
 		beginPaint();
+		playSound(Snd_Background, 100);
 		putImage(&Img_StartMenu, 0, 0);
 		endPaint();
 		break;

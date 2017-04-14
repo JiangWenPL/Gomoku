@@ -151,6 +151,7 @@ int Chess_Clean() {
 	}
 	pHead = NULL;
 	pTail = NULL;
+	return 0;
 }
 
 //Check who is winner.

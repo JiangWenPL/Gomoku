@@ -14,15 +14,17 @@ int Change_Data(Point* This) {
 		//This case when user press retarct.
 		Chess_Pop();
 	}
-	else if (This->x < CHESS_RANGE_LOWER || This->x > CHESS_RANGE_UPPER || This->y <CHESS_RANGE_LOWER || This->y>CHESS_RANGE_UPPER) {
-		//In case of out of range.
-		assert(This->x < CHESS_RANGE_LOWER || This->x > CHESS_RANGE_UPPER || This->y <CHESS_RANGE_LOWER || This->y>CHESS_RANGE_UPPER);
-	}
 	else {
-		//Normal status
-		Chess_PushBack(This);
+		if (This->x < CHESS_RANGE_LOWER || This->x > CHESS_RANGE_UPPER || This->y <CHESS_RANGE_LOWER || This->y>CHESS_RANGE_UPPER) {
+			//In case of out of range.
+			assert(This->x < CHESS_RANGE_LOWER || This->x > CHESS_RANGE_UPPER || This->y <CHESS_RANGE_LOWER || This->y>CHESS_RANGE_UPPER);
+		}
+		else {
+			//Normal status
+			Chess_PushBack(This);
+		}
+		Check_Winner(This);
 	}
-	Check_Winner(This);
 	return 0;
 }
 int Check_Winner(Point * This)

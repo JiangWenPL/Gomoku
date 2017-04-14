@@ -30,9 +30,64 @@ int Check_Winner(Point * This)
 	int xBegin = This->x;
 	int yBegin = This->y;
 	int is_Victory = 0;
-	int left_Chess,up_Chess,down_Chess,right_Chess;
-	//Cheak left condition
-	
+	int Connect_Count;
+	int Horizon_Chess, Vertical_Chess;
+	//Check Horizon condition
+	for (Connect_Count = 0, Horizon_Chess = LEFT_LIMIT; Horizon_Chess < RIGHT_LIMIT; Horizon_Chess++) {
+		if (Connect_Count == VICTORYCONDITION) break;
+		if (xBegin + Horizon_Chess < CHESS_RANGE_LOWER) continue;
+		//Becasu from left to cont.
+		if (xBegin + Horizon_Chess > CHESS_RANGE_UPPER) break;
+		if (CheckBoard[yBegin][xBegin + Horizon_Chess] == m_Turn) Connect_Count++;
+		else Connect_Count = 0;
+	}
+	if (Connect_Count == VICTORYCONDITION) is_Victory = TRUE;
+	if (!is_Victory) {
+		//Check Vertical condition
+		for (Connect_Count = 0, Vertical_Chess = LEFT_LIMIT; Vertical_Chess < RIGHT_LIMIT; Vertical_Chess++) {
+			if (Connect_Count == VICTORYCONDITION) break;
+			if (yBegin + Vertical_Chess < CHESS_RANGE_LOWER) continue;
+			//Becasu from left to cont.
+			if (yBegin + Vertical_Chess > CHESS_RANGE_UPPER) break;
+			if (CheckBoard[yBegin+ Vertical_Chess][xBegin] == m_Turn) Connect_Count++;
+			else Connect_Count = 0;
+		}
+		if (Connect_Count == VICTORYCONDITION) is_Victory = TRUE;
+	}
+	if (!is_Victory) {
+		//Check diag condition
+		for (Connect_Count = 0, Vertical_Chess = LEFT_LIMIT, Horizon_Chess = LEFT_LIMIT; Horizon_Chess < RIGHT_LIMIT; Vertical_Chess++,Horizon_Chess++) {
+			if (Connect_Count == VICTORYCONDITION) break;
+			if (yBegin + Vertical_Chess < CHESS_RANGE_LOWER) continue;
+			if (xBegin + Horizon_Chess < CHESS_RANGE_LOWER) continue;
+			//Becasu from left to cont.
+			if (xBegin + Horizon_Chess > CHESS_RANGE_UPPER) break;
+			//Becasu from left to cont.
+			if (yBegin + Vertical_Chess > CHESS_RANGE_UPPER) break;
+			if (CheckBoard[yBegin + Vertical_Chess][xBegin+Horizon_Chess] == m_Turn) Connect_Count++;
+			else Connect_Count = 0;
+		}
+		if (Connect_Count == VICTORYCONDITION) is_Victory = TRUE;
+	}
+	if (!is_Victory) {
+		//Check diag condition
+		for (Connect_Count = 0, Vertical_Chess = LEFT_LIMIT, Horizon_Chess = RIGHT_LIMIT; Vertical_Chess < RIGHT_LIMIT; Vertical_Chess++, Horizon_Chess--) {
+			if (Connect_Count == VICTORYCONDITION) break;
+			if (yBegin + Vertical_Chess < CHESS_RANGE_LOWER) continue;
+			if (xBegin + Horizon_Chess > CHESS_RANGE_UPPER) continue;
+			//Becasu from right top to cont.
+			if (xBegin + Horizon_Chess < CHESS_RANGE_LOWER) break;
+			//Becasu from right top to cont.
+			if (yBegin + Vertical_Chess > CHESS_RANGE_UPPER) break;
+			if (CheckBoard[yBegin + Vertical_Chess][xBegin + Horizon_Chess] == m_Turn) Connect_Count++;
+			else Connect_Count = 0;
+		}
+		if (Connect_Count == VICTORYCONDITION) is_Victory = TRUE;
+	}
+	if (is_Victory) {
+		is_Victory = m_Turn;
+		Chess_Clean();
+	}
 	return 0;
 }
 int Chess_PushBack(Point *This) {

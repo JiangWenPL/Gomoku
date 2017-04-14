@@ -32,5 +32,6 @@ int Check_Winner(Point *This);
 #define VICTORYCONDITION 5
 #define TURE 1
 #define	FALSE 0
-#define 
+#define LEFT_LIMIT -4
+#define RIGHT_LIMIT 4
 #endif // !CHECK_ALGORITHM_H

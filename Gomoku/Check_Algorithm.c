@@ -22,18 +22,44 @@ int Change_Data(Point* This) {
 		//Normal status
 		Chess_PushBack(This);
 	}
+	Check_Winner(This);
+	return 0;
+}
+int Check_Winner(Point * This)
+{
+	int xBegin = This->x;
+	int yBegin = This->y;
+	int is_Victory = 0;
+	int left_Chess,up_Chess,down_Chess,right_Chess;
+	//Cheak left condition
+	
+	return 0;
 }
 int Chess_PushBack(Point *This) {
+	CheckBoard[This->y][This->x] = m_Turn;
 	if (pHead == NULL) {
 		//New linked list.
 		pHead = (Chess*)malloc(sizeof(*pHead));//Probably have problem.
 		assert(pHead);
+		//In case of malloc fail.
 		pHead->Next = NULL;
 		pHead->Prior = NULL;
 		pHead->X = This->x;
 		pHead->Y = This->y;
 		pTail = pHead;
 	}
+	else {
+		pTail->Next = (Chess*)malloc(sizeof(*pTail));
+		assert(pTail->Next);
+		//In case of malloc fail.
+		pTail->Prior = pTail;
+		pTail = pTail->Next;
+		//Move pTail point to the end.
+		pTail->Next = NULL;
+		pTail->X = This->x;
+		pTail->Y = This->y;
+	}
+	return 0;
 }
 int Chess_Pop() {
 	int run_status = 0;
@@ -56,8 +82,20 @@ int Chess_Pop() {
 			pTail = pTail->Prior;
 			free(Temp);
 			pTail->Next = NULL;
-		}	
+		}
 	}
 	return run_status;
 }
+
+int Chess_Clean() {
+	Chess *clean_Temp = NULL;
+	//Clean up whole linked list;
+	for (Chess *it = pHead; it; it = clean_Temp) {
+		clean_Temp = it->Next;
+		free(it);
+	}
+	pHead = NULL;
+	pTail = NULL;
+}
+
 //Check who is winner.

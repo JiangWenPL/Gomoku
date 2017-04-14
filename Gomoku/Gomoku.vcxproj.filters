@@ -21,6 +21,12 @@
     <ClInclude Include="main.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Check_Algorithm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AI.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="acllib.c">
@@ -29,10 +35,30 @@
     <ClCompile Include="main.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Check_Algorithm.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AI.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="五子棋盤.bmp">
+    <Image Include="CheckBoardNew.bmp">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="black.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="StartMenu.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="white.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Error_Log.txt">
+      <Filter>资源文件</Filter>
+    </Text>
   </ItemGroup>
 </Project>

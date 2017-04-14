@@ -140,14 +140,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="acllib.h" />
+    <ClInclude Include="AI.h" />
+    <ClInclude Include="Check_Algorithm.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="acllib.c" />
+    <ClCompile Include="AI.c" />
+    <ClCompile Include="Check_Algorithm.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="五子棋盤.bmp" />
+    <Image Include="black.bmp" />
+    <Image Include="CheckBoardNew.bmp" />
+    <Image Include="StartMenu.bmp" />
+    <Image Include="white.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Error_Log.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

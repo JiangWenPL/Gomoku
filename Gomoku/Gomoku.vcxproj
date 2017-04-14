@@ -140,10 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="acllib.h" />
+    <ClInclude Include="Check_Algorithm.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="acllib.c" />
+    <ClCompile Include="Check_Algorithm.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>

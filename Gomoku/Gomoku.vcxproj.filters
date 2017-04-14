@@ -21,12 +21,18 @@
     <ClInclude Include="main.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Check_Algorithm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="acllib.c">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="main.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Check_Algorithm.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

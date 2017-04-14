@@ -22,4 +22,8 @@ extern int m_Victory;
 extern int m_Turn;
 int Change_Data(Point* This);
 int Chess_Pop();
+#define EX_ALEAT_FLAG 1
+#define CHESS_RANGE_LOWER 0
+#define CHESS_RANGE_UPPER 14
+#define FREE_EMPTY 1
 #endif // !CHECK_ALGORITHM_H

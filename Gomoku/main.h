@@ -12,6 +12,7 @@
 #include "acllib.h"
 #include "stdio.h"
 #include "AI.h"
+#include <assert.h>
 //#include "Check_Algorithm.h"
 //Type define.
 typedef struct s_Point{

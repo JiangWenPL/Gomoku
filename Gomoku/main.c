@@ -30,7 +30,7 @@ int Setup() {
 	initConsole();
 #endif // DEBUG
 	Status = MENU;
-	Status = PLAYING;
+	//Status = PLAYING;
 	registerTimerEvent(&TimerEvent);
 	registerMouseEvent(&MouseEvent);
 	InitialTheGame();

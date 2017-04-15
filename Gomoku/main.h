@@ -43,7 +43,7 @@ POINT get_point(int x, int y);//Get the point on the board from the location on 
 TimerEventCallback TimerEvent(int timerID);
 MouseEventCallback MouseEvent(int x, int y, int button, int event);
 int ClearTheBoard();//把二维数组全部元素重置为0
-
+int Change_Data(Point* This);
 
 //Extern variable
 extern status Status;
@@ -51,4 +51,5 @@ extern int m_Victory;
 extern int CheckBoard[CHECKBORAD_SIZE][CHECKBORAD_SIZE];
 extern int m_Turn;
 //Ai module
+#pragma warning(disable :4133 4047 4024)
 #endif // !MAIN_H

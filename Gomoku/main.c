@@ -24,7 +24,7 @@ const int WINDOW_HEIGHT = 740;//Window size.
 
 
 int Setup() {
-	freopen("Error_Log.txt", "w", stderr);
+	freopen("Error_Log.txt", "w+", stderr);
 	//Redirect stderr to our error log file.
 	initWindow("Gomoku", DEFAULT, DEFAULT, WINDOW_WIDTH, WINDOW_HEIGHT);
 #ifdef DEBUG
@@ -189,4 +189,5 @@ int ClearTheBoard() {
 			CheckBoard[i][j] = 0;
 	m_Turn = BLACKSIDE;
 	m_Victory = 0;
+	return 0;
 }

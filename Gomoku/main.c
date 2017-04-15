@@ -53,6 +53,7 @@ int InitialTheGame()
 	loadSound(".//Victory.mp3", &Snd_Victory);
 	endPaint();
 	m_Turn = 1;
+	PaintTheGame();
 	playSound(Snd_Background, 1);
 	return 0;
 }

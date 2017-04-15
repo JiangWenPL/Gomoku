@@ -35,7 +35,7 @@ int Check_Winner(Point * This)
 	int Connect_Count;
 	int Horizon_Chess, Vertical_Chess;
 	//Check Horizon condition
-	for (Connect_Count = 0, Horizon_Chess = LEFT_LIMIT; Horizon_Chess < RIGHT_LIMIT; Horizon_Chess++) {
+	for (Connect_Count = 0, Horizon_Chess = LEFT_LIMIT; Horizon_Chess < RIGHT_LIMIT+1; Horizon_Chess++) {
 		if (Connect_Count == VICTORYCONDITION) break;
 		if (xBegin + Horizon_Chess < CHESS_RANGE_LOWER) continue;
 		//Becasu from left to cont.
@@ -46,7 +46,7 @@ int Check_Winner(Point * This)
 	if (Connect_Count == VICTORYCONDITION) is_Victory = TRUE;
 	if (!is_Victory) {
 		//Check Vertical condition
-		for (Connect_Count = 0, Vertical_Chess = LEFT_LIMIT; Vertical_Chess < RIGHT_LIMIT; Vertical_Chess++) {
+		for (Connect_Count = 0, Vertical_Chess = LEFT_LIMIT; Vertical_Chess < RIGHT_LIMIT+1; Vertical_Chess++) {
 			if (Connect_Count == VICTORYCONDITION) break;
 			if (yBegin + Vertical_Chess < CHESS_RANGE_LOWER) continue;
 			//Becasu from left to cont.
@@ -58,7 +58,7 @@ int Check_Winner(Point * This)
 	}
 	if (!is_Victory) {
 		//Check diag condition
-		for (Connect_Count = 0, Vertical_Chess = LEFT_LIMIT, Horizon_Chess = LEFT_LIMIT; Horizon_Chess < RIGHT_LIMIT; Vertical_Chess++,Horizon_Chess++) {
+		for (Connect_Count = 0, Vertical_Chess = LEFT_LIMIT, Horizon_Chess = LEFT_LIMIT-1; Horizon_Chess < RIGHT_LIMIT; Vertical_Chess++,Horizon_Chess++) {
 			if (Connect_Count == VICTORYCONDITION) break;
 			if (yBegin + Vertical_Chess < CHESS_RANGE_LOWER) continue;
 			if (xBegin + Horizon_Chess < CHESS_RANGE_LOWER) continue;
@@ -73,7 +73,7 @@ int Check_Winner(Point * This)
 	}
 	if (!is_Victory) {
 		//Check diag condition
-		for (Connect_Count = 0, Vertical_Chess = LEFT_LIMIT, Horizon_Chess = RIGHT_LIMIT; Vertical_Chess < RIGHT_LIMIT; Vertical_Chess++, Horizon_Chess--) {
+		for (Connect_Count = 0, Vertical_Chess = LEFT_LIMIT, Horizon_Chess = RIGHT_LIMIT+1; Vertical_Chess < RIGHT_LIMIT; Vertical_Chess++, Horizon_Chess--) {
 			if (Connect_Count == VICTORYCONDITION) break;
 			if (yBegin + Vertical_Chess < CHESS_RANGE_LOWER) continue;
 			if (xBegin + Horizon_Chess > CHESS_RANGE_UPPER) continue;
@@ -86,6 +86,10 @@ int Check_Winner(Point * This)
 		}
 		if (Connect_Count == VICTORYCONDITION) is_Victory = TRUE;
 	}
+#ifdef DEBUG
+	printf("Connect_Count = %d\n", Connect_Count);
+#endif // DEBUG
+
 	if (is_Victory) {
 		m_Victory = m_Turn;
 		Chess_Clean();

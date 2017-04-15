@@ -7,7 +7,6 @@
 *    Copyright (c) 2017 Wen Jiang, Huang Nianmei, Li Jianing. All rights reserved.
 */
 #include"main.h"
-//#define DEBUG
 //Debug mode.
 //Global Variable define
 status Status;

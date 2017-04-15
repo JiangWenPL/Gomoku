@@ -27,6 +27,9 @@
     <ClInclude Include="AI.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="graphics.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="acllib.c">
@@ -55,6 +58,12 @@
     <Image Include="white.bmp">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="win_black.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="win_white.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Error_Log.txt">
@@ -63,6 +72,12 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="BackGround.mp3">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="DropChess.mp3">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="Victory.mp3">
       <Filter>资源文件</Filter>
     </Media>
   </ItemGroup>

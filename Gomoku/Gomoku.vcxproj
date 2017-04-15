@@ -142,6 +142,7 @@
     <ClInclude Include="acllib.h" />
     <ClInclude Include="AI.h" />
     <ClInclude Include="Check_Algorithm.h" />
+    <ClInclude Include="graphics.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
@@ -155,12 +156,16 @@
     <Image Include="CheckBoardNew.bmp" />
     <Image Include="StartMenu.bmp" />
     <Image Include="white.bmp" />
+    <Image Include="win_black.bmp" />
+    <Image Include="win_white.bmp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Error_Log.txt" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="BackGround.mp3" />
+    <Media Include="DropChess.mp3" />
+    <Media Include="Victory.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

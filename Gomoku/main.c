@@ -97,6 +97,7 @@ MouseEventCallback MouseEvent(int x, int y, int button, int event)
 			 else if (x > REGRET_BUTTON_LEFT_X&&x < REGRET_BUTTON_RIGHT_X&&y<REGRET_BUTTON_DOWN_Y&&y>REGRET_BUTTON_UP_Y) {
 				point.x = point.y = -1;
 				Change_Data(&point);
+				m_Turn = -m_Turn;
 			}
 			break;
 		case END:

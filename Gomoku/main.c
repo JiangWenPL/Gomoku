@@ -128,6 +128,9 @@ int PaintTheGame()
 	{
 	case MENU:
 		beginPaint();
+		stopSound(Snd_Victory);
+		playSound(Snd_Background, 1);
+		//Stop sound if user chose to replay.
 		putImage(&Img_StartMenu, 0, 0);
 		endPaint();
 		break;
@@ -139,6 +142,8 @@ int PaintTheGame()
 		break;
 	case END:
 		beginPaint();
+		stopSound(Snd_Background);
+		//Stop background music.
 		playSound(Snd_Victory, 1);
 		if (m_Turn == -BLACKSIDE)putImage(&Img_BlackWin, 0, 0);
 		else if(m_Turn == -WHITESIDE)putImage(&Img_WhiteWin, 0, 0);

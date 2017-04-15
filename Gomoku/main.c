@@ -181,4 +181,6 @@ int ClearTheBoard() {
 	for (i = 0; i < CHECKBORAD_SIZE; i++)
 		for (j = 0; j < CHECKBORAD_SIZE; j++)
 			CheckBoard[i][j] = 0;
+	m_Turn = BLACKSIDE;
+	m_Victory = 0;
 }
